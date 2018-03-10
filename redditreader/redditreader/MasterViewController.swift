@@ -12,7 +12,6 @@ class MasterViewController: UITableViewController {
     
     // MARK: - Variables
     var detailViewController: DetailViewController? = nil
-    var places = ["Los Angeles", "New York", "San Francisco"]
     
     var redditItems = [RedditItem]()
     
@@ -29,6 +28,8 @@ class MasterViewController: UITableViewController {
         getData()
         
         customizeNavigationBar()
+        
+        configTableView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +121,16 @@ class MasterViewController: UITableViewController {
         let nb = navigationController?.navigationBar
         nb?.barStyle = UIBarStyle.blackTranslucent
         nb?.tintColor = UIColor.white
+    }
+    
+    func configTableView() {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(getNewData), for: .valueChanged)
+        refreshControl = refresh
+    }
+    
+    @objc func getNewData() {
+        refreshControl?.endRefreshing()
     }
     
 }
