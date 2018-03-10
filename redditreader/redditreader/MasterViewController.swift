@@ -133,5 +133,14 @@ class MasterViewController: UITableViewController {
         refreshControl?.endRefreshing()
     }
     
+    @IBAction func dismissPostTapped(_ sender: UIButton) {
+        if let cell = sender.superview?.superview as? ItemTableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            redditItems.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
+        }
+    }
 }
 
