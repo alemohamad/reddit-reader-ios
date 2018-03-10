@@ -60,12 +60,14 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemTableViewCell
 
-        cell.titleLabel.text = redditItems[indexPath.row].title
-        cell.authorLabel.text = redditItems[indexPath.row].author
-        cell.commentsLabel.text = "\(redditItems[indexPath.row].num_comments) comments"
-        cell.timeLabel.text = "\(redditItems[indexPath.row].created)"
+        let item = redditItems[indexPath.row]
         
-        if let thumb = redditItems[indexPath.row].thumbnail {
+        cell.titleLabel.text = item.title
+        cell.authorLabel.text = item.author
+        cell.commentsLabel.text = item.getComments()
+        cell.timeLabel.text = item.getHoursAgo()
+        
+        if let thumb = item.thumbnail {
             if !thumb.isEmpty {
                 DispatchQueue.global().async {
                     let url = URL(string: thumb)

@@ -29,4 +29,20 @@ struct RedditItem: Decodable {
     let author: String
     let num_comments: Int
     let created: Int
+    
+    func getHoursAgo() -> String {
+        let createdDate = Date(timeIntervalSince1970: Double(created))
+        
+        let interval = Calendar.current.dateComponents([.hour], from: createdDate, to: Date()).hour!
+        
+        if interval > 0 {
+            return interval == 1 ? "\(interval)" + " hour ago" : "\(interval)" + " hours ago"
+        }
+        
+        return "Just now"
+    }
+    
+    func getComments() -> String {
+        return num_comments == 1 ? "\(num_comments)" + " comment" : "\(num_comments)" + " comments"
+    }
 }
