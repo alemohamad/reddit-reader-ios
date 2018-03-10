@@ -30,6 +30,8 @@ class MasterViewController: UITableViewController {
         customizeNavigationBar()
         
         configTableView()
+        
+        addToolbar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +110,8 @@ class MasterViewController: UITableViewController {
     }
     
     func getData() {
+        redditItems.removeAll()
+        
         if let reddit = readJson() {
             for item in reddit.data.children {
                 redditItems.append(item.data)
@@ -130,6 +134,7 @@ class MasterViewController: UITableViewController {
     }
     
     @objc func getNewData() {
+        getData()
         refreshControl?.endRefreshing()
     }
     
@@ -142,5 +147,25 @@ class MasterViewController: UITableViewController {
             tableView.endUpdates()
         }
     }
+    
+    func addToolbar() {
+        navigationController?.isToolbarHidden = false
+        navigationController?.toolbar.barStyle = .blackTranslucent
+        navigationController?.toolbar.tintColor = UIColor(red: 249/255, green: 183/255, blue: 73/255, alpha: 1)
+        
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let dismissButton = UIBarButtonItem(title: "Dismiss All", style: .plain, target: self, action: #selector(dismissAllItems))
+        
+        toolbarItems = [flexible, dismissButton, flexible]
+    }
+    
+    @objc func dismissAllItems() {
+        redditItems.removeAll()
+        
+        let range = NSMakeRange(0, tableView.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        tableView.reloadSections(sections as IndexSet, with: .left)
+    }
+    
 }
 
