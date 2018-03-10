@@ -58,12 +58,17 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemTableViewCell
 
-        cell.textLabel!.text = redditItems[indexPath.row].title
-
+        cell.titleLabel.text = redditItems[indexPath.row].title
+        cell.authorLabel.text = redditItems[indexPath.row].author
+        cell.commentsLabel.text = "\(redditItems[indexPath.row].num_comments) comments"
+        cell.timeLabel.text = "\(redditItems[indexPath.row].created)"
+        
         return cell
     }
+    
+    // MARK: - Functions
     
     func readJson() -> RedditList? {
         if let path = Bundle.main.path(forResource: "top", ofType: "json") {

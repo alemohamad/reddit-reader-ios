@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		994C4081205387F20095EC79 /* top.json in Resources */ = {isa = PBXBuildFile; fileRef = 994C4080205387F10095EC79 /* top.json */; };
 		994C4083205398650095EC79 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C4082205398650095EC79 /* Models.swift */; };
+		997A774E20539E8D00E25AD5 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997A774D20539E8D00E25AD5 /* ItemTableViewCell.swift */; };
 		99BF0E6B205377D200C5285F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF0E6A205377D200C5285F /* AppDelegate.swift */; };
 		99BF0E6D205377D200C5285F /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF0E6C205377D200C5285F /* MasterViewController.swift */; };
 		99BF0E6F205377D200C5285F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF0E6E205377D200C5285F /* DetailViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		994C4080205387F10095EC79 /* top.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = top.json; sourceTree = "<group>"; };
 		994C4082205398650095EC79 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		997A774D20539E8D00E25AD5 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		99BF0E67205377D200C5285F /* redditreader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = redditreader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BF0E6A205377D200C5285F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99BF0E6C205377D200C5285F /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				99BF0E6A205377D200C5285F /* AppDelegate.swift */,
 				99BF0E6C205377D200C5285F /* MasterViewController.swift */,
+				997A774D20539E8D00E25AD5 /* ItemTableViewCell.swift */,
 				99BF0E6E205377D200C5285F /* DetailViewController.swift */,
 				994C4082205398650095EC79 /* Models.swift */,
 				99BF0E70205377D200C5285F /* Main.storyboard */,
@@ -148,6 +151,7 @@
 			files = (
 				99BF0E6F205377D200C5285F /* DetailViewController.swift in Sources */,
 				99BF0E6D205377D200C5285F /* MasterViewController.swift in Sources */,
+				997A774E20539E8D00E25AD5 /* ItemTableViewCell.swift in Sources */,
 				99BF0E6B205377D200C5285F /* AppDelegate.swift in Sources */,
 				994C4083205398650095EC79 /* Models.swift in Sources */,
 			);
