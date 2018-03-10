@@ -27,6 +27,8 @@ class MasterViewController: UITableViewController {
         }
         
         getData()
+        
+        customizeNavigationBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +110,12 @@ class MasterViewController: UITableViewController {
             
             tableView.reloadData()
         }
+    }
+    
+    func customizeNavigationBar() {
+        let nb = navigationController?.navigationBar
+        nb?.barStyle = UIBarStyle.blackTranslucent
+        nb?.tintColor = UIColor.white
     }
     
 }

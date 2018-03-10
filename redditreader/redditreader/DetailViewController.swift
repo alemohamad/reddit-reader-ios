@@ -30,6 +30,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         configureView()
+        customizeNavigationBar()
     }
     
     // MARK: - Functions
@@ -53,6 +54,19 @@ class DetailViewController: UIViewController {
                 }
             }
         }
+        else {
+            if let authorLabel = authorLabel,
+                let titleLabel = titleLabel {
+                authorLabel.text = ""
+                titleLabel.text = ""
+            }
+        }
+    }
+    
+    func customizeNavigationBar() {
+        let nb = navigationController?.navigationBar
+        nb?.barStyle = UIBarStyle.blackTranslucent
+        nb?.tintColor = UIColor.white
     }
     
 }
