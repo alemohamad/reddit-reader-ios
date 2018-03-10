@@ -9,11 +9,15 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-
+    
+    // MARK: - Variables
     var detailViewController: DetailViewController? = nil
     var places = ["Los Angeles", "New York", "San Francisco"]
-
-
+    
+    var redditItems = [RedditItem]()
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +40,7 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = places[indexPath.row]
+                controller.detailItem = redditItems[indexPath.row].title
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -50,13 +54,13 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.count
+        return redditItems.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        cell.textLabel!.text = places[indexPath.row]
+        cell.textLabel!.text = redditItems[indexPath.row].title
 
         return cell
     }
@@ -78,8 +82,10 @@ class MasterViewController: UITableViewController {
     func getData() {
         if let reddit = readJson() {
             for item in reddit.data.children {
-                print(item.data)
+                redditItems.append(item.data)
             }
+            
+            tableView.reloadData()
         }
     }
     
