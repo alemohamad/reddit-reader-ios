@@ -21,6 +21,8 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        getData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +60,28 @@ class MasterViewController: UITableViewController {
 
         return cell
     }
-
+    
+    func readJson() -> RedditList? {
+        if let path = Bundle.main.path(forResource: "top", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path))
+                
+                let reddit = try JSONDecoder().decode(RedditList.self, from: data)
+                return reddit
+            } catch let jsonErr {
+                print("Error serializing json: ", jsonErr)
+            }
+        }
+        return nil
+    }
+    
+    func getData() {
+        if let reddit = readJson() {
+            for item in reddit.data.children {
+                print(item.data)
+            }
+        }
+    }
+    
 }
 
