@@ -9,31 +9,51 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
-
-    func configureView() {
-        if let detail = detailItem {
-            if let label = detailDescriptionLabel {
-                label.text = detail
-            }
-        }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        configureView()
-    }
-
-    var detailItem: String? {
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var thumbImageView: UIImageView!
+    
+    // MARK: - Variables
+    
+    var redditItem: RedditItem? {
         didSet {
-            // Update the view.
             configureView()
         }
     }
-
-
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureView()
+    }
+    
+    // MARK: - Functions
+    
+    func configureView() {
+        if let item = redditItem,
+            let authorLabel = authorLabel,
+            let titleLabel = titleLabel {
+            authorLabel.text = item.author
+            titleLabel.text = item.title
+            
+            if let thumb = item.thumbnail {
+                if !thumb.isEmpty {
+                    DispatchQueue.global().async {
+                        let url = URL(string: thumb)
+                        let data = try? Data(contentsOf: url!)
+                        DispatchQueue.main.async {
+                            self.thumbImageView.image = UIImage(data: data!)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }
 

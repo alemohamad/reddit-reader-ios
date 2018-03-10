@@ -40,7 +40,7 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = redditItems[indexPath.row].title
+                controller.redditItem = redditItems[indexPath.row]
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -59,13 +59,15 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemTableViewCell
-
+        
         let item = redditItems[indexPath.row]
         
         cell.titleLabel.text = item.title
         cell.authorLabel.text = item.author
         cell.commentsLabel.text = item.getComments()
         cell.timeLabel.text = item.getHoursAgo()
+        
+        cell.thumbImageView.image = UIImage()
         
         if let thumb = item.thumbnail {
             if !thumb.isEmpty {
