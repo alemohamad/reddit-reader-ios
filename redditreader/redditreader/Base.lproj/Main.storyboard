@@ -53,6 +53,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ug-Qi-h5i">
+                                                <rect key="frame" x="87" y="68" width="200" height="200"/>
+                                                <connections>
+                                                    <action selector="saveThumbTapped:" destination="JEX-9P-axG" eventType="touchUpInside" id="KTu-ji-Gmj"/>
+                                                </connections>
+                                            </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bzX-8U-Y7n">
                                                 <rect key="frame" x="87" y="68" width="200" height="200"/>
                                                 <constraints>
@@ -65,12 +71,16 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="qVc-aQ-8dj" secondAttribute="trailing" constant="16" id="91n-qa-Lgh"/>
                                             <constraint firstItem="cCs-kG-g8w" firstAttribute="leading" secondItem="2Di-xX-3D2" secondAttribute="leading" constant="16" id="D46-M6-hAB"/>
+                                            <constraint firstItem="8ug-Qi-h5i" firstAttribute="width" secondItem="bzX-8U-Y7n" secondAttribute="width" id="DYx-uj-E21"/>
                                             <constraint firstItem="bzX-8U-Y7n" firstAttribute="top" secondItem="qVc-aQ-8dj" secondAttribute="bottom" constant="30" id="ESZ-tv-61s"/>
+                                            <constraint firstItem="8ug-Qi-h5i" firstAttribute="height" secondItem="bzX-8U-Y7n" secondAttribute="height" id="Foa-wG-gbD"/>
+                                            <constraint firstItem="8ug-Qi-h5i" firstAttribute="centerY" secondItem="bzX-8U-Y7n" secondAttribute="centerY" id="IpM-RS-cEN"/>
                                             <constraint firstItem="qVc-aQ-8dj" firstAttribute="leading" secondItem="2Di-xX-3D2" secondAttribute="leading" constant="16" id="N2c-hT-MAf"/>
                                             <constraint firstItem="cCs-kG-g8w" firstAttribute="top" secondItem="bzX-8U-Y7n" secondAttribute="bottom" constant="30" id="V6i-Gy-9xX"/>
                                             <constraint firstAttribute="trailing" secondItem="cCs-kG-g8w" secondAttribute="trailing" constant="16" id="d88-bL-Jey"/>
                                             <constraint firstItem="bzX-8U-Y7n" firstAttribute="centerX" secondItem="2Di-xX-3D2" secondAttribute="centerX" id="igf-bK-uvk"/>
                                             <constraint firstAttribute="bottom" secondItem="cCs-kG-g8w" secondAttribute="bottom" constant="16" id="kbK-DR-jfI"/>
+                                            <constraint firstItem="8ug-Qi-h5i" firstAttribute="centerX" secondItem="bzX-8U-Y7n" secondAttribute="centerX" id="mqB-zX-usV"/>
                                             <constraint firstItem="qVc-aQ-8dj" firstAttribute="top" secondItem="2Di-xX-3D2" secondAttribute="top" constant="16" id="ylC-0h-haW"/>
                                         </constraints>
                                     </view>

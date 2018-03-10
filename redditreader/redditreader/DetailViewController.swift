@@ -69,5 +69,15 @@ class DetailViewController: UIViewController {
         nb?.tintColor = UIColor.white
     }
     
+    @IBAction func saveThumbTapped(_ sender: UIButton) {
+        if let image = thumbImageView.image {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            
+            let alert = UIAlertController(title: "Saved image", message: "The image from this post was saved on your camera roll.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
 

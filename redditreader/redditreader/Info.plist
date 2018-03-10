@@ -58,5 +58,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to save reddit images</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Used to save reddit images</string>
 </dict>
 </plist>
