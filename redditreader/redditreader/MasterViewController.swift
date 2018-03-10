@@ -65,6 +65,18 @@ class MasterViewController: UITableViewController {
         cell.commentsLabel.text = "\(redditItems[indexPath.row].num_comments) comments"
         cell.timeLabel.text = "\(redditItems[indexPath.row].created)"
         
+        if let thumb = redditItems[indexPath.row].thumbnail {
+            if !thumb.isEmpty {
+                DispatchQueue.global().async {
+                    let url = URL(string: thumb)
+                    let data = try? Data(contentsOf: url!)
+                    DispatchQueue.main.async {
+                        cell.thumbImageView.image = UIImage(data: data!)
+                    }
+                }
+            }
+        }
+        
         return cell
     }
     
